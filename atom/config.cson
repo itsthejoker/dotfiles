@@ -1,0 +1,15 @@
+"*":
+  core:
+    themes: [
+      "atom-dark-ui"
+      "monokai"
+    ]
+  editor:
+    scrollPastEnd: true
+    showIndentGuide: true
+    tabLength: 4
+    tabType: "soft"
+  "exception-reporting":
+    userId: "5491b9cd-3ffd-26fe-1dc9-a85ea153fa5d"
+  welcome:
+    showOnStartup: false
