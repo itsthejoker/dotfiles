@@ -11,12 +11,12 @@ from subprocess import call
 
 def backup_atom(base_path, home):
     logger.info("Attempting to back up Atom settings...")
-    path = home+"/.atom"
+    path = home + "/.atom"
     # do we even have an atom installation to back up?
     if os.path.isdir(path):
         # verify that the destination directory exists
-        if not os.path.isdir(os.path.join(base_path+"/atom")):
-            os.mkdir(os.path.join(base_path+"/atom"))
+        if not os.path.isdir(os.path.join(base_path + "/atom")):
+            os.mkdir(os.path.join(base_path + "/atom"))
 
         files = []
         files_to_copy = []
@@ -34,12 +34,12 @@ def backup_atom(base_path, home):
         for item in files_to_copy:
             logger.debug("Copying {}...".format(item))
             logger.debug(os.path.join(base_path, "atom"))
-            shutil.copyfile(os.path.join(path+"/"+item),
-                            os.path.join(base_path+"/atom/"+item))
+            shutil.copyfile(os.path.join(path + "/" + item),
+                            os.path.join(base_path + "/atom/" + item))
 
-        os.chdir(os.path.join(base_path+"/atom"))
+        os.chdir(os.path.join(base_path + "/atom"))
         # call gets annoyed if we don't create the file first
-        open(os.path.join(base_path+"/atom/packages.list"), 'w').close
+        open(os.path.join(base_path + "/atom/packages.list"), 'w').close
         call("apm list --installed --bare > {}/atom/packages.list".
              format(base_path), shell=True)
 
@@ -51,15 +51,15 @@ def backup_atom(base_path, home):
 
 def backup_bashrc(base_path, home):
     logger.debug("Attempting to back up .bashrc...")
-    shutil.copyfile(os.path.join(home+"/.bashrc"),
-                    os.path.join(base_path+"/"+"bashrc"))
+    shutil.copyfile(os.path.join(home + "/.bashrc"),
+                    os.path.join(base_path + "/" + "bashrc"))
     logger.info("Successfully backed up .bashrc!")
 
 
 def backup_gitconfig(base_path, home):
     logger.debug("Attempting to back up .gitconfig...")
-    shutil.copyfile(os.path.join(home+"/.gitconfig"),
-                    os.path.join(base_path+"/"+"gitconfig"))
+    shutil.copyfile(os.path.join(home + "/.gitconfig"),
+                    os.path.join(base_path + "/" + "gitconfig"))
     logger.info("Successfully backed up .gitconfig!")
 
 
